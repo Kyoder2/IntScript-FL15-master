@@ -14,6 +14,8 @@ public class PlayerControl : MonoBehaviour
 	public Color green = Color.green;
 	public Color yellow = Color.yellow;
 	public Color white = Color.white;
+
+	private GameData gameDataRef;
 	// Use this for initialization
 	void Start () 
 	{
@@ -24,18 +26,18 @@ public class PlayerControl : MonoBehaviour
 	void FixedUpdate()
 	{
 		float foreAndAft = Input.GetAxis ("Vertical") * speed;
-		float rotation = Input.GetAxis ("Horizontal") * rotaionSpeed;
-		rigidbody.AddRelativeForce (0, 0, foreAndAft);
-		rigidbody.AddTorque (0, rotation, 0);
+		float rotation = Input.GetAxis ("Horizontal") * rotationSpeed;
+		GetComponent<Rigidbody>().AddRelativeForce (0, 0, foreAndAft);
+		GetComponent<Rigidbody>().AddTorque (0, rotation, 0);
 	}
 
-	void OnTriggerStay(collider other)
+	void OnTriggerStay(Collider other)
 	{
-		rigidbody.AddForce(Vector3.up *hoverPower);
+		GetComponent<Rigidbody>().AddForce(Vector3.up *hoverPower);
 	}
 	public void PickedColor (Color playerColor)
 	{
-		renderer.material.color = playerColor;
+		GetComponent<Renderer>().material.color = playerColor;
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -49,7 +51,7 @@ public class PlayerControl : MonoBehaviour
 
 	void OnCollisionEnter(Collision collidedWith)
 	{
-		if(collideWith.gameObject.tag == "BadOrb")
+		if(collidedWith.gameObject.tag == "BadOrb")
 		{
 			gameDataRef.playerLives -= 1;
 			Destroy(collidedWith.gameObject);
@@ -62,7 +64,7 @@ public class PlayerControl : MonoBehaviour
 		clone = Instantiate(projectile, transform.position,
 	 transform.rotation) as Rigidbody;
 		clone.transform.Translate(0, .5f, 2.1f);
-		clone.velocity = 
-	TransformDirection (Vector3.forward * 50);
+		clone.velocity = transform. 
+	TransformDirection(Vector3.forward * 50);
 	}
 }

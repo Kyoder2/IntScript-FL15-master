@@ -13,7 +13,7 @@ namespace Assets.Code.States
 			if(Application.loadedLevelName != "Scene0")
 				Application.LoadLevel("Scene0");
 
-			manger.gameDataRef.SetScore();
+			manager.gameDataRef.SetScore();
 		}
 				
 		public void StateUpdate()

@@ -16,7 +16,7 @@ namespace Assets.Code.States
 				Application.LoadLevel("Scene1");
 
 				player = GameObject.Find("Player");
-				player.rigidbody.isKinematic = false;
+				player.GetComponent<Rigidbody>().isKinematic = false;
 
 			foreach(GameObject camera in manager.gameDataRef.cameras)
 			{
@@ -34,7 +34,7 @@ namespace Assets.Code.States
 			{
 				manager.SwitchState (new LostStateScene1 (manager));
 				manager.gameDataRef.ResetPlayer();
-				player.rigidbody.isKinematic = true;
+				player.GetComponent<Rigidbody>().isKinematic = true;
 				player.transform.position = new Vector3(50, .5f, 40);
 			}
 
@@ -42,8 +42,8 @@ namespace Assets.Code.States
 			{
 				manager.SwitchState(new
 				 WonStateScene1(manager));
-				player.rigidbody.isKinematic = true;
-				player.transform.position = Vector3(50, .05f, 40);
+				player.GetComponent<Rigidbody>().isKinematic = true;
+				player.transform.position = new Vector3(50, .05f, 40);
 			}
 			
 		}
@@ -62,7 +62,7 @@ namespace Assets.Code.States
 					PlayStateScene1_2(manager));
 			}
 
-			Gui.Box(new Rect(Screen.width - 110,10,100,25),
+			GUI.Box(new Rect(Screen.width - 110,10,100,25),
 				string.Format("Lives Left: "+ manager.gameDataRef.playerLives));
 		}
 	}

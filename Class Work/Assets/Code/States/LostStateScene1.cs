@@ -31,7 +31,7 @@ namespace Assets.Code.States
 			}
 			if (GUI.Button(new Rect(10, 50, 270, 30), 
 				"Click Here or Return key to Restart Game") ||
-			Input.GetKeyUp (GetCode.Return));
+			Input.GetKeyUp(KeyCode.Return));
 			{
 				manager.Restart ();
 			}

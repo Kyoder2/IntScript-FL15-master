@@ -19,9 +19,9 @@ public class EnergyPulsePower : MonoBehaviour
  	{
  		if(other.gameObject.tag == "BadOrb")
  		{
- 			Instantiate(goodOrb, other.transform.position, other.transform.rotaion);
- 			gameObject.Find("GameManager").
- 				GetComponent<GameDate>().playerLives += 1;
+ 			Instantiate(goodOrb, other.transform.position, other.transform.rotation);
+ 			GameObject.Find("GameManager").
+ 				GetComponent<GameData>().playerLives += 1;
  			Destroy(other.gameObject);
  			Destroy(gameObject);
  		}
