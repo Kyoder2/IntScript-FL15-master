@@ -15,18 +15,21 @@ namespace Assets.Code.States
 				Application.LoadLevel("Scene0");
 		}
 		
-		public void StateUpdate () {
+		public void StateUpdate ()
+		{
 		}
 		
 		public void ShowIt ()
 		{
-			GUI.DrawTexture(new Rect(0,0, Screen.width,
-				Screen.height), manager.gameDataRef.beginStateSplash,
+			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height),
+				manager.gameDataRef.beginStateSplash, 
 				ScaleMode.StretchToFill);
-			
-			if(GUI.Button(new Rect(10, 10, 250, 60), 
-				"Press here or any key to continue.") || Input.anyKeyDown) {
-					manager.SwitchState(new SetupState(manager));
+
+			if (GUI.Button(new Rect(10, 10, 250, 60),
+				"Press Here to Continue") ||
+				Input.anyKeyDown)
+			{
+				manager.SwitchState (new SetupState (manager));
 			}
 		}
 	}

@@ -16,21 +16,25 @@ namespace Assets.Code.States
 		
 		public void StateUpdate()
 		{
-			if (Input.GetKeyUp (KeyCode.Space))
-			{
-				manager.SwitchState (new PlayStateScene2 (manager));
-			}
-
-			if (Input.GetKeyUp (KeyCode.Return))
-			{
-				manager.Restart();
-			}
 		}
 
 		public void ShowIt()
 		{
-			Debug.Log("In LostStateScene2");
+			GUI.DrawTexture(new Rect (0, 0, Screen.width, Screen.height),
+				manager.gameDataRef.lostStateSplash, ScaleMode.StretchToFill);
+
+			if (GUI.Button(new Rect(10, 10, 270, 30), "Click Here or Space key to repeat Level") ||
+				Input.GetKeyUp (KeyCode.Space))
+			{
+				manager.SwitchState (new
+					PlayStateScene1_1 (manager));
+			}
+			if (GUI.Button(new Rect(10, 50, 270, 30), 
+				"Click Here or Return key to Restart Game") ||
+			Input.GetKeyUp (GetCode.Return));
+			{
+				manager.Restart ();
+			}
 		}
 	}
 }
-

@@ -7,10 +7,10 @@ public class StateManager : MonoBehaviour
     private IStateBase activeState;
 	
 	private static StateManager instanceRef;
-
+	
 	[HideInInspector]
 	public GameData gameDataRef;
-	
+
 	void Awake ()
 	{
 		if(instanceRef == null)
@@ -42,10 +42,10 @@ public class StateManager : MonoBehaviour
 			activeState.ShowIt();
 	}
 
-    public void SwitchState(IStateBase newState)
-    {
-        activeState = newState;
-    }
+    	public void SwitchState(IStateBase newState)
+   		 {
+   	     activeState = newState;
+   		 }
 	
 	public void Restart()
 	{
